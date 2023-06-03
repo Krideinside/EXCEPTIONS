@@ -59,14 +59,10 @@ public class ShopRepository {
     }
 
     public void removeById(int id) {
-        for (Product product : products) {
-            if (findById(id) == null) {
-                throw new NotFoundException(
-                        "Товар c ID: " + id + " не найден"
-                );
-            }
-            remove(id);
+        if (findById(id) == null) {
+            throw new NotFoundException(
+                    "Товар c ID: " + id + " не найден");
         }
-
-        }
+        remove(id);
     }
+}
