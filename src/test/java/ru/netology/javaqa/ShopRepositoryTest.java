@@ -8,13 +8,13 @@ import java.sql.SQLOutput;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ShopRepositoryTest {
+    ShopRepository shop = new ShopRepository();
+    Product bread = new Product(1, "Хлеб", 30);
+    Product butter = new Product(2, "Масло", 50);
+    Product salt = new Product(3, "Соль", 20);
 
     @Test
     public void shouldFindProductByID() {
-        ShopRepository shop = new ShopRepository();
-        Product bread = new Product(1, "Хлеб", 30);
-        Product butter = new Product(2, "Масло", 50);
-        Product salt = new Product(3, "Соль", 20);
 
         shop.add(bread);
         shop.add(butter);
@@ -29,10 +29,6 @@ class ShopRepositoryTest {
 
     @Test
     public void shouldNotFindProductByID() {
-        ShopRepository shop = new ShopRepository();
-        Product bread = new Product(1, "Хлеб", 30);
-        Product butter = new Product(2, "Масло", 50);
-        Product salt = new Product(3, "Соль", 20);
 
         shop.add(bread);
         shop.add(butter);
@@ -42,11 +38,7 @@ class ShopRepositoryTest {
     }
 
     @Test
-    public void shouldRemoveProductByID() {
-        ShopRepository shop = new ShopRepository();
-        Product bread = new Product(1, "Хлеб", 30);
-        Product butter = new Product(2, "Масло", 50);
-        Product salt = new Product(3, "Соль", 20);
+    public void shouldRemoveProductByID(){
 
         shop.add(bread);
         shop.add(butter);
@@ -62,10 +54,6 @@ class ShopRepositoryTest {
 
     @Test
     public void shouldTryRemoveFakeProductByID() {
-        ShopRepository shop = new ShopRepository();
-        Product bread = new Product(1, "Хлеб", 30);
-        Product butter = new Product(2, "Масло", 50);
-        Product salt = new Product(3, "Соль", 20);
 
         shop.add(bread);
         shop.add(butter);
@@ -77,4 +65,11 @@ class ShopRepositoryTest {
             System.out.println("Ошибка");
         }
     }
+
+//    @Test
+//    public void souldTrytoAddProductWithSameId() {
+//        Product water = new Product(2, "Вода",15);
+//
+//        shop.add(water);
+//    }
 }

@@ -1,9 +1,6 @@
 package ru.netology.javaqa;
 
 public class ShopRepository {
-    //    public ShopRepository(Product[]) {
-//    super(id, title, price);
-//    }
     private Product[] products = new Product[0];
 
     /**
@@ -44,6 +41,22 @@ public class ShopRepository {
         }
         return null;
     }
+
+//    /**
+//     * Метод добавления товара в репозиторий
+//     *
+//     * @param product — добавляемый товар
+//     */
+//    public void add(Product product) {;
+//        for (Product id : products) {
+//            if (product.getId() == product.id) {
+//                throw new AlreadyExistsException(
+//                        "Товар с ID: " + id + "уже есть");
+//            }
+//            System.out.println("Уже есть");
+//        }
+//        products = addToArray(products, product);
+//    }
 
     // Этот способ мы рассматривали в теории в теме про композицию
     public void remove(int id) {
