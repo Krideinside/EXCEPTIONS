@@ -73,4 +73,20 @@ class ShopRepositoryTest {
             shop.add(water);
         });
     }
+
+    @Test
+    public void shouldAddProductWithNewId() {
+
+        shop.add(bread);
+        shop.add(butter);
+        shop.add(salt);
+
+        Product water = new Product(4, "Вода", 15);
+
+        shop.add(water);
+        
+        Product[] expected = {bread, butter,salt, water};
+        Product[] actual = shop.findAll();
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
