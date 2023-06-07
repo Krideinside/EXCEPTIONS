@@ -42,6 +42,7 @@ public class ShopRepository {
         return null;
     }
 
+
 //    /**
 //     * Метод добавления товара в репозиторий
 //     *
@@ -59,7 +60,13 @@ public class ShopRepository {
 //    }
 
     // Этот способ мы рассматривали в теории в теме про композицию
-    public void remove(int id) {
+
+    public void removeById(int id){
+        if (findById(id) == null) {
+            throw new NotFoundException(
+                    "Товар c ID: " + id + " не найден"
+            );
+        }
         Product[] tmp = new Product[products.length - 1];
         int copyToIndex = 0;
         for (Product product : products) {
@@ -69,13 +76,5 @@ public class ShopRepository {
             }
         }
         products = tmp;
-    }
-
-    public void removeById(int id) {
-        if (findById(id) == null) {
-            throw new NotFoundException(
-                    "Товар c ID: " + id + " не найден");
-        }
-        remove(id);
     }
 }

@@ -3,10 +3,6 @@ package ru.netology.javaqa;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLOutput;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class ShopRepositoryTest {
     ShopRepository shop = new ShopRepository();
     Product bread = new Product(1, "Хлеб", 30);
@@ -59,12 +55,11 @@ class ShopRepositoryTest {
         shop.add(butter);
         shop.add(salt);
 
-        try {
+        Assertions.assertThrows(NotFoundException.class, () -> {
             shop.removeById(4);
-        } catch (NotFoundException e) {
-            System.out.println("Ошибка");
-        }
+        });
     }
+}
 
 //    @Test
 //    public void souldTrytoAddProductWithSameId() {
@@ -72,4 +67,3 @@ class ShopRepositoryTest {
 //
 //        shop.add(water);
 //    }
-}
