@@ -34,7 +34,7 @@ class ShopRepositoryTest {
     }
 
     @Test
-    public void shouldRemoveProductByID(){
+    public void shouldRemoveProductByID() {
 
         shop.add(bread);
         shop.add(butter);
@@ -59,11 +59,18 @@ class ShopRepositoryTest {
             shop.removeById(4);
         });
     }
-}
 
-//    @Test
-//    public void souldTrytoAddProductWithSameId() {
-//        Product water = new Product(2, "Вода",15);
-//
-//        shop.add(water);
-//    }
+    @Test
+    public void shouldTryToAddProductWithSameId() {
+
+        shop.add(bread);
+        shop.add(butter);
+        shop.add(salt);
+
+        Product water = new Product(2, "Вода", 15);
+
+        Assertions.assertThrows(AlreadyExistsException.class, () -> {
+            shop.add(water);
+        });
+    }
+}

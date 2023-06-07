@@ -26,6 +26,11 @@ public class ShopRepository {
      * @param product — добавляемый товар
      */
     public void add(Product product) {
+        if (findById(product.id) != null) {
+            throw new AlreadyExistsException(
+                    "Товар с ID: " + product.id + " уже есть"
+            );
+        }
         products = addToArray(products, product);
     }
 
@@ -48,18 +53,7 @@ public class ShopRepository {
 //     *
 //     * @param product — добавляемый товар
 //     */
-//    public void add(Product product) {;
-//        for (Product id : products) {
-//            if (product.getId() == product.id) {
-//                throw new AlreadyExistsException(
-//                        "Товар с ID: " + id + "уже есть");
-//            }
-//            System.out.println("Уже есть");
-//        }
-//        products = addToArray(products, product);
-//    }
-
-    // Этот способ мы рассматривали в теории в теме про композицию
+// Этот способ мы рассматривали в теории в теме про композицию
 
     public void removeById(int id){
         if (findById(id) == null) {
